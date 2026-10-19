@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.19)  16 OCT 2026 23:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.19)  19 OCT 2026 20:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -322,11 +322,11 @@ Underfull \hbox (badness 4739) in paragraph at lines 34--35
 
 
 (./overview.tex
-<overview.png, id=1, 832.10875pt x 526.96875pt>
-File: overview.png Graphic file (type png)
-<use overview.png>
-Package pdftex.def Info: overview.png  used on input line 4.
-(pdftex.def)             Requested size: 361.19843pt x 228.7471pt.
+<overview.pdf, id=1, 3365.22626pt x 2131.58908pt>
+File: overview.pdf Graphic file (type pdf)
+<use overview.pdf>
+Package pdftex.def Info: overview.pdf  used on input line 4.
+(pdftex.def)             Requested size: 361.19843pt x 228.78358pt.
 )
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 59.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1pcr.fd
@@ -339,52 +339,79 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 {/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 
 
+Underfull \hbox (badness 1888) in paragraph at lines 73--75
+\OT1/ptm/b/n/10 Tool Ex-e-cu-tion. \OT1/ptm/m/n/10 The three stages are in-voked se-quen-
+ []
 
-[2 <./overview.png>] (./example.tex
-<example.png, id=18, 697.60625pt x 476.78125pt>
-File: example.png Graphic file (type png)
-<use example.png>
-Package pdftex.def Info: example.png  used on input line 4.
-(pdftex.def)             Requested size: 412.80157pt x 282.12785pt.
+
+Underfull \hbox (badness 6477) in paragraph at lines 73--75
+\OT1/pcr/m/n/10 annotated_code.py \OT1/ptm/m/n/10 and \OT1/pcr/m/n/10 annotated_code.json\OT1/ptm/m/n/10 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+[]\OT1/ptm/m/n/10 The as-so-ci-ated re-search study eval-u-ates \OT1/ptm/m/sc/10 Deep-
+ []
+
+
+Underfull \hbox (badness 3281) in paragraph at lines 79--80
+\OT1/ptm/m/sc/10 GroundRepair \OT1/ptm/m/n/10 on 100 model-level DL pro-gram-ming
+ []
+
+
+Underfull \hbox (badness 3148) in paragraph at lines 79--80
+\OT1/ptm/m/n/10 tasks us-ing six open-weight LLMs across Ten-sor-Flow,
+ []
+
+
+
+[2 <./overview.pdf>] (./example.tex
+<example.pdf, id=54, 790.955pt x 542.025pt>
+File: example.pdf Graphic file (type pdf)
+<use example.pdf>
+Package pdftex.def Info: example.pdf  used on input line 4.
+(pdftex.def)             Requested size: 412.80157pt x 282.88844pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 )
-Underfull \hbox (badness 2393) in paragraph at lines 90--91
+Underfull \hbox (badness 2393) in paragraph at lines 136--137
 \OT1/ptm/m/n/10 the draft pro-gram de-fines a fully con-nected layer us-
  []
 
 
-Underfull \hbox (badness 7221) in paragraph at lines 90--91
+Underfull \hbox (badness 7221) in paragraph at lines 136--137
 \OT1/ptm/m/n/10 ing \OT1/pcr/m/n/10 nn.Linear \OT1/ptm/m/n/10 with \OT1/pcr/m/n/10 in_features=512*7*7 \OT1/ptm/m/n/10 and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--105
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--151
 []\OT1/ptm/b/n/10 Retrieval-Augmented Code Gen-er-a-tion. \OT1/ptm/m/n/10 Retrieval-
  []
 
 
-Underfull \hbox (badness 1571) in paragraph at lines 103--105
+Underfull \hbox (badness 1571) in paragraph at lines 149--151
 \OT1/ptm/m/n/10 augmented gen-er-a-tion (RAG) grounds an LLM's out-put
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--105
+Underfull \hbox (badness 10000) in paragraph at lines 149--151
 \OT1/ptm/m/n/10 in ex-ter-nal knowl-edge [1]. API doc-u-men-ta-tion can
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--105
+Underfull \hbox (badness 10000) in paragraph at lines 149--151
 \OT1/ptm/m/n/10 pro-vide sig-na-tures, pa-ram-e-ter de-scrip-tions, and us-age
  []
 
 
 
-(build/main.bbl
+[3] (build/main.bbl
 
-[3])
+)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -398,29 +425,25 @@ Before submitting the final camera ready copy, remember to:
 
 
 
-
-
-[4
-
- <./example.png>] (build/main.aux)
+[4 <./example.pdf>] (build/main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3787 strings out of 473190
- 59838 string characters out of 5715800
- 461650 words of memory out of 5000000
- 26990 multiletter control sequences out of 15000+600000
- 601801 words of font info for 116 fonts, out of 8000000 for 9000
+ 3799 strings out of 473190
+ 60089 string characters out of 5715800
+ 464639 words of memory out of 5000000
+ 27001 multiletter control sequences out of 15000+600000
+ 603933 words of font info for 122 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,8n,65p,1134b,343s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on build/main.pdf (4 pages, 426842 bytes).
+Output written on build/main.pdf (4 pages, 214599 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
- 31 compressed objects within 1 object stream
+ 107 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
