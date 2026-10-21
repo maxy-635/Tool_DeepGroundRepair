@@ -21,19 +21,43 @@
 \BIBdecl
 
 \bibitem{rag}
-P.~Lewis, E.~Perez, A.~Piktus, F.~Petroni, V.~Karpukhin, N.~Goyal, H.~K{\"u}ttler, M.~Lewis, W.~tau Yih, T.~Rockt{\"a}schel, S.~Riedel, and D.~Kiela, ``Retrieval-augmented generation for knowledge-intensive {NLP} tasks,'' in \emph{Advances in Neural Information Processing Systems}, 2020.
+\BIBentryALTinterwordspacing
+P.~Lewis, E.~Perez, A.~Piktus, F.~Petroni, V.~Karpukhin, N.~Goyal, H.~Kuttler, M.~Lewis, W.~tau Yih, T.~Rocktaschel, S.~Riedel, and D.~Kiela, ``Retrieval-augmented generation for knowledge-intensive {NLP} tasks,'' in \emph{Advances in Neural Information Processing Systems}, 2020. [Online]. Available: \url{https://arxiv.org/abs/2005.11401}
+\BIBentrySTDinterwordspacing
 
 \bibitem{DeepEval}
 \BIBentryALTinterwordspacing
-X.~Ma, X.~Du, C.~Li, J.~Meng, X.~Fang, W.~Ding, and Z.~Zheng, ``How do large language models perform in deep learning code generation? an empirical study,'' \emph{ACM Trans. Softw. Eng. Methodol.}, May 2026, just Accepted. [Online]. Available: \url{https://doi.org/10.1145/3816024}
+X.~Ma, X.~Du, C.~Li, J.~Meng, X.~Fang, W.~Ding, and Z.~Zheng, ``How do large language models perform in deep learning code generation? an empirical study,'' \emph{ACM Transactions on Software Engineering and Methodology}, 2026. [Online]. Available: \url{https://doi.org/10.1145/3816024}
 \BIBentrySTDinterwordspacing
 
 \bibitem{deepgroundrepair}
 \BIBentryALTinterwordspacing
-X.~Ma, Z.~Wang, X.~Lu, X.~Du, C.~Li, J.~Li, H.~Li, and Z.~Zheng, ``{DeepGroundRepair}: From {API}-grounded generation to shape-aware repair for deep learning programs,'' 2026. [Online]. Available: \url{https://arxiv.org/abs/2610.16897}
+X.~Ma, Z.~Wang, X.~Lu, X.~Du, C.~Li, J.~Li, H.~Li, and Z.~Zheng, ``{DeepGroundRepair}: From api-grounded generation to shape-aware repair for deep learning programs,'' 2026, preprint; manuscript under review at ACM Transactions on Software Engineering and Methodology. [Online]. Available: \url{https://arxiv.org/abs/2610.16897}
 \BIBentrySTDinterwordspacing
 
 \bibitem{selfrepair}
-T.~X. Olausson, J.~P. Inala, C.~Wang, J.~Gao, and A.~Solar-Lezama, ``Is self-repair a silver bullet for code generation?'' in \emph{International Conference on Learning Representations}, 2024.
+\BIBentryALTinterwordspacing
+X.~Chen, M.~Lin, N.~Schaerli, and D.~Zhou, ``Teaching large language models to self-debug,'' in \emph{International Conference on Learning Representations}, 2024. [Online]. Available: \url{https://proceedings.iclr.cc/paper_files/paper/2024/hash/2460396f2d0d421885997dd1612ac56b-Abstract-Conference.html}
+\BIBentrySTDinterwordspacing
+
+\bibitem{islambugs}
+\BIBentryALTinterwordspacing
+M.~J. Islam, G.~Nguyen, R.~Pan, and H.~Rajan, ``A comprehensive study on deep learning bug characteristics,'' in \emph{Proceedings of the 27th ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering}, 2019. [Online]. Available: \url{https://arxiv.org/abs/1906.01388}
+\BIBentrySTDinterwordspacing
+
+\bibitem{docprompting}
+\BIBentryALTinterwordspacing
+S.~Zhou, U.~Alon, F.~F. Xu, Z.~Jiang, and G.~Neubig, ``{DocPrompting}: Generating code by retrieving the docs,'' in \emph{International Conference on Learning Representations}, 2023. [Online]. Available: \url{https://mlanthology.org/iclr/2023/zhou2023iclr-docprompting/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{toolcoder}
+\BIBentryALTinterwordspacing
+K.~Zhang, H.~Zhang, G.~Li, J.~Li, Z.~Li, and Z.~Jin, ``{ToolCoder}: Teach code generation models to use {API} search tools,'' 2023. [Online]. Available: \url{https://arxiv.org/abs/2305.04032}
+\BIBentrySTDinterwordspacing
+
+\bibitem{coderl}
+\BIBentryALTinterwordspacing
+H.~Le, Y.~Wang, A.~D. Gotmare, S.~Savarese, and S.~C.~H. Hoi, ``{CodeRL}: Mastering code generation through pretrained models and deep reinforcement learning,'' in \emph{Advances in Neural Information Processing Systems}, 2022. [Online]. Available: \url{https://arxiv.org/abs/2207.01780}
+\BIBentrySTDinterwordspacing
 
 \end{thebibliography}
