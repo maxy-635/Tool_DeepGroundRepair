@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.19)  20 OCT 2026 23:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.19)  22 OCT 2026 00:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -271,39 +271,52 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 24.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 24.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 24.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 33--34
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 24.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 24.
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
 []\OT1/ptm/m/n/10 Existing retrieval-augmented gen-er-a-tion (RAG) and
  []
 
 
-Underfull \hbox (badness 4366) in paragraph at lines 33--34
+Underfull \hbox (badness 4366) in paragraph at lines 38--39
 \OT1/ptm/m/n/10 execution-feedback-guided re-pair meth-ods only par-tially
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 33--34
+Underfull \hbox (badness 2245) in paragraph at lines 38--39
 \OT1/ptm/m/n/10 rel-e-vant APIs due to the gap be-tween high-level task
  []
 
 
-Underfull \hbox (badness 2150) in paragraph at lines 33--34
-\OT1/ptm/m/n/10 sig-nif-i-cant be-cause tensor-shape mis-matches ac-count for
+Underfull \hbox (badness 5756) in paragraph at lines 38--39
+\OT1/ptm/m/n/10 re-quire-ments and fine-grained API knowl-edge [3]--[5].
  []
+
+
+Underfull \hbox (badness 4291) in paragraph at lines 38--39
+\OT1/ptm/m/n/10 par-tic-u-larly sig-nif-i-cant be-cause tensor-shape mis-matches
+ []
+
+
 
 
 Underfull \hbox (badness 1478) in paragraph at lines 40--44
 \OT1/ptm/m/n/10 re-trieval, lo-cal-iza-tion, and re-pair al-go-rithms are de-tailed
  []
-
-
 
 
 
@@ -315,115 +328,85 @@ Underfull \hbox (badness 1478) in paragraph at lines 40--44
 File: overview.pdf Graphic file (type pdf)
 <use overview.pdf>
 Package pdftex.def Info: overview.pdf  used on input line 4.
-(pdftex.def)             Requested size: 371.52063pt x 229.45522pt.
+(pdftex.def)             Requested size: 361.19843pt x 223.08322pt.
 )
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 66.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 2903) in paragraph at lines 80--83
+
+
+Underfull \hbox (badness 2903) in paragraph at lines 79--82
 \OT1/pcr/m/n/10 step _ two/$\OT1/ptm/m/n/10 , and $\OT1/pcr/m/n/10 run _ bashes / step _ three/$\OT1/ptm/m/n/10 . Stage
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--83
+Underfull \hbox (badness 10000) in paragraph at lines 79--82
 \OT1/ptm/m/n/10 1 gen-er-ates draft pro-grams (\OT1/pcr/m/n/10 generated_code.py\OT1/ptm/m/n/10 )
  []
 
 
-Underfull \hbox (badness 1688) in paragraph at lines 80--83
+Underfull \hbox (badness 1688) in paragraph at lines 79--82
 \OT1/ptm/m/n/10 and API re-trieval records. Stage 2 di-ag-noses ex-e-cu-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--83
+Underfull \hbox (badness 10000) in paragraph at lines 79--82
 \OT1/ptm/m/n/10 fail-ures and pro-duces \OT1/pcr/m/n/10 annotated_code.py \OT1/ptm/m/n/10 and
  []
 
 
-Underfull \hbox (badness 7613) in paragraph at lines 80--83
+Underfull \hbox (badness 7613) in paragraph at lines 79--82
 \OT1/pcr/m/n/10 annotated_code.json\OT1/ptm/m/n/10 , con-tain-ing parameter-masked
  []
 
 
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 89--90
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
 []\OT1/ptm/m/n/10 The as-so-ci-ated re-search study eval-u-ates \OT1/ptm/m/sc/10 Deep-
  []
 
 
-Underfull \hbox (badness 1688) in paragraph at lines 89--90
-\OT1/ptm/m/n/10 re-trieved us-ing sparse and dense meth-ods. B3 and B4
- []
-
-
-Underfull \hbox (badness 2941) in paragraph at lines 89--90
+Underfull \hbox (badness 2941) in paragraph at lines 88--89
 \OT1/ptm/m/n/10 ex-tend B1 and B2, re-spec-tively, with traceback-guided
  []
 
 (./syntax.tex) (./executability.tex)
 
 [2] (./example.tex
-<example.pdf, id=16, 790.955pt x 541.02126pt>
+<example.pdf, id=16, 1317.92375pt x 234.8775pt>
 File: example.pdf Graphic file (type pdf)
 <use example.pdf>
 Package pdftex.def Info: example.pdf  used on input line 4.
-(pdftex.def)             Requested size: 376.6778pt x 257.65643pt.
+(pdftex.def)             Requested size: 516.0pt x 91.96024pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 )
-Underfull \hbox (badness 2393) in paragraph at lines 106--107
-\OT1/ptm/m/n/10 the draft pro-gram de-fines a fully con-nected layer us-
- []
-
-
-Underfull \hbox (badness 7221) in paragraph at lines 106--107
-\OT1/ptm/m/n/10 ing \OT1/pcr/m/n/10 nn.Linear \OT1/ptm/m/n/10 with \OT1/pcr/m/n/10 in_features=512*7*7 \OT1/ptm/m/n/10 and
- []
-
-
-Underfull \hbox (badness 1521) in paragraph at lines 110--111
-\OT1/ptm/b/n/10 (c) Shape-Annotated Code. \OT1/ptm/m/n/10 As shown in Fig-ure 2[](c),
+Underfull \hbox (badness 6477) in paragraph at lines 105--107
+\OT1/pcr/m/n/10 in_features=512*7*7 \OT1/ptm/m/n/10 and \OT1/pcr/m/n/10 out_features=1024\OT1/ptm/m/n/10 .
  []
 
 
 
 
-Underfull \hbox (badness 1383) in paragraph at lines 112--114
-\OT1/ptm/b/n/10 (d) Re-paired Code. \OT1/ptm/m/n/10 As shown in Fig-ure 2[](d), \OT1/ptm/m/sc/10 Deep-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 120--122
+Underfull \hbox (badness 10000) in paragraph at lines 122--124
 \OT1/ptm/b/n/10 Retrieval-Augmented Code Gen-er-a-tion. \OT1/ptm/m/n/10 Retrieval-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--122
+Underfull \hbox (badness 10000) in paragraph at lines 122--124
 \OT1/ptm/m/n/10 augmented ap-proaches im-prove code gen-er-a-tion by
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--122
+Underfull \hbox (badness 10000) in paragraph at lines 122--124
 \OT1/ptm/m/n/10 in-cor-po-rat-ing ex-ter-nal knowl-edge, par-tic-u-larly API
  []
 
 
-Underfull \hbox (badness 3735) in paragraph at lines 120--122
-\OT1/ptm/m/n/10 re-trieved knowl-edge alone may not en-sure valid API
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 120--122
-\OT1/ptm/m/n/10 de-pen-den-cies. \OT1/ptm/m/sc/10 Deep-GroundRepair \OT1/ptm/m/n/10 ad-dresses these
- []
-
-
-Underfull \hbox (badness 1558) in paragraph at lines 123--125
-\OT1/ptm/b/n/10 Execution-Feedback-Guided Code Re-pair. \OT1/ptm/m/n/10 Ex-ist-ing ap-
+Underfull \hbox (badness 6559) in paragraph at lines 122--124
+\OT1/ptm/m/n/10 doc-u-men-ta-tion and search re-sults [3]--[5], [13], [14].
  []
 
 
@@ -451,15 +434,15 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3811 strings out of 473190
- 60295 string characters out of 5715800
- 464651 words of memory out of 5000000
- 27009 multiletter control sequences out of 15000+600000
- 604624 words of font info for 123 fonts, out of 8000000 for 9000
+ 3865 strings out of 473190
+ 61187 string characters out of 5715800
+ 465682 words of memory out of 5000000
+ 27058 multiletter control sequences out of 15000+600000
+ 610122 words of font info for 138 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,8n,65p,1259b,356s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,11n,65p,1207b,356s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on build/main.pdf (4 pages, 225821 bytes).
+Output written on build/main.pdf (4 pages, 229830 bytes).
 PDF statistics:
  106 PDF objects out of 1000 (max. 8388607)
  57 compressed objects within 1 object stream
