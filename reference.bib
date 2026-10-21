@@ -1,47 +1,122 @@
+@article{DeepEval,
+  author  = {Xiangyue Ma and Xiaoting Du and Chenglong Li and Jiangtao Meng and Xiaoke Fang and Wenjie Ding and Zheng Zheng},
+  title   = {How Do Large Language Models Perform in Deep Learning Code Generation? An Empirical Study},
+  journal = {ACM Transactions on Software Engineering and Methodology},
+  year    = {2026},
+  doi     = {10.1145/3816024},
+  url     = {https://doi.org/10.1145/3816024}
+}
+
 @misc{deepgroundrepair,
   author        = {Xiangyue Ma and Zhen Wang and Xuhui Lu and Xiaoting Du and Chenglong Li and Jun Li and Haotian Li and Zheng Zheng},
-  title         = {{DeepGroundRepair}: From {API}-Grounded Generation to Shape-Aware Repair for Deep Learning Programs},
+  title         = {{DeepGroundRepair}: From API-Grounded Generation to Shape-Aware Repair for Deep Learning Programs},
   year          = {2026},
   eprint        = {2610.16897},
   archivePrefix = {arXiv},
-  primaryClass  = {cs.SE},
-  url           = {https://arxiv.org/abs/2610.16897}
-}
-
-@misc{artifact,
-  author       = {Xiangyue Ma and Zhen Wang and Xuhui Lu and Xiaoting Du and Chenglong Li and Jun Li and Haotian Li and Zheng Zheng},
-  title        = {Artifacts for {DeepGroundRepair}},
-  howpublished = {Zenodo},
-  year         = {2026},
-  doi          = {10.5281/zenodo.22727085},
-  url          = {https://doi.org/10.5281/zenodo.22727085}
+  url           = {https://arxiv.org/abs/2610.16897},
+  note          = {Preprint; manuscript under review at ACM Transactions on Software Engineering and Methodology}
 }
 
 @inproceedings{rag,
-  author    = {Patrick Lewis and Ethan Perez and Aleksandra Piktus and Fabio Petroni and Vladimir Karpukhin and Naman Goyal and Heinrich K{\"u}ttler and Mike Lewis and Wen-tau Yih and Tim Rockt{\"a}schel and Sebastian Riedel and Douwe Kiela},
+  author    = {Patrick Lewis and Ethan Perez and Aleksandra Piktus and Fabio Petroni and Vladimir Karpukhin and Naman Goyal and Heinrich Kuttler and Mike Lewis and Wen-tau Yih and Tim Rocktaschel and Sebastian Riedel and Douwe Kiela},
   title     = {Retrieval-Augmented Generation for Knowledge-Intensive {NLP} Tasks},
   booktitle = {Advances in Neural Information Processing Systems},
-  year      = {2020}
+  year      = {2020},
+  url       = {https://arxiv.org/abs/2005.11401}
 }
 
-@article{DeepEval,
-author = {Ma, Xiangyue and Du, Xiaoting and Li, Chenglong and Meng, Jiangtao and Fang, Xiaoke and Ding, Wenjie and Zheng, Zheng},
-title = {How Do Large Language Models Perform in Deep Learning Code Generation? An Empirical Study},
-year = {2026},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-issn = {1049-331X},
-url = {https://doi.org/10.1145/3816024},
-doi = {10.1145/3816024},
-note = {Just Accepted},
-journal = {ACM Trans. Softw. Eng. Methodol.},
-month = may,
-keywords = {large language model, deep learning, empirical study, code generation}
+@inproceedings{docprompting,
+  author    = {Shuyan Zhou and Uri Alon and Frank F. Xu and Zhengbao Jiang and Graham Neubig},
+  title     = {{DocPrompting}: Generating Code by Retrieving the Docs},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2023},
+  url       = {https://mlanthology.org/iclr/2023/zhou2023iclr-docprompting/}
+}
+
+@misc{toolcoder,
+  author        = {Kechi Zhang and Huangzhao Zhang and Ge Li and Jia Li and Zhuo Li and Zhi Jin},
+  title         = {{ToolCoder}: Teach Code Generation Models to Use {API} Search Tools},
+  year          = {2023},
+  eprint        = {2305.04032},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2305.04032}
+}
+
+@inproceedings{repocoder,
+  author    = {Fengji Zhang and Bei Chen and Yue Zhang and Jacky Keung and Jin Liu and Daoguang Zan and Yi Mao and Jian-Guang Lou and Weizhu Chen},
+  title     = {{RepoCoder}: Repository-Level Code Completion Through Iterative Retrieval and Generation},
+  booktitle = {Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing},
+  year      = {2023},
+  pages     = {2471--2484},
+  doi       = {10.18653/v1/2023.emnlp-main.151},
+  url       = {https://aclanthology.org/2023.emnlp-main.151/}
 }
 
 @inproceedings{selfrepair,
-  author    = {Theo X. Olausson and Jeevana Priya Inala and Chenglong Wang and Jianfeng Gao and Armando Solar-Lezama},
-  title     = {Is Self-Repair a Silver Bullet for Code Generation?},
+  author    = {Xinyun Chen and Maxwell Lin and Nathanael Schaerli and Denny Zhou},
+  title     = {Teaching Large Language Models to Self-Debug},
   booktitle = {International Conference on Learning Representations},
-  year      = {2024}
+  year      = {2024},
+  url       = {https://proceedings.iclr.cc/paper_files/paper/2024/hash/2460396f2d0d421885997dd1612ac56b-Abstract-Conference.html}
+}
+
+@inproceedings{coderl,
+  author    = {Hung Le and Yue Wang and Akhilesh Deepak Gotmare and Silvio Savarese and Steven C. H. Hoi},
+  title     = {{CodeRL}: Mastering Code Generation through Pretrained Models and Deep Reinforcement Learning},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2022},
+  url       = {https://arxiv.org/abs/2207.01780}
+}
+
+@inproceedings{selfrefine,
+  author    = {Aman Madaan and Niket Tandon and Prakhar Gupta and Skyler Hallinan and Luyu Gao and Sarah Wiegreffe and Uri Alon and Nouha Dziri and Shrimai Prabhumoye and Yiming Yang and Shashank Gupta and Bodhisattwa Prasad Majumder and Katherine Hermann and Sean Welleck and Amir Yazdanbakhsh and Peter Clark},
+  title     = {{Self-Refine}: Iterative Refinement with Self-Feedback},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2023},
+  url       = {https://papers.neurips.cc/paper_files/paper/2023/hash/91edff07232fb1b55a505a9e9f6c0ff3-Abstract-Conference.html}
+}
+
+@inproceedings{tensorflowbugs,
+  author    = {Yuhao Zhang and Yifan Chen and Shing-Chi Cheung and Yingfei Xiong and Lu Zhang},
+  title     = {An Empirical Study on {TensorFlow} Program Bugs},
+  booktitle = {Proceedings of the 27th ACM SIGSOFT International Symposium on Software Testing and Analysis},
+  year      = {2018},
+  pages     = {129--140},
+  doi       = {10.1145/3213846.3213866}
+}
+
+@inproceedings{islambugs,
+  author    = {Md Johirul Islam and Giang Nguyen and Rangeet Pan and Hridesh Rajan},
+  title     = {A Comprehensive Study on Deep Learning Bug Characteristics},
+  booktitle = {Proceedings of the 27th ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering},
+  year      = {2019},
+  doi       = {10.1145/3338906.3338955},
+  url       = {https://arxiv.org/abs/1906.01388}
+}
+
+@article{tensfa2,
+  author  = {Dangwei Wu and Beijun Shen and Yuting Chen and He Jiang and Lei Qiao},
+  title   = {Automatically Repairing Tensor Shape Faults in Deep Learning Programs},
+  journal = {Information and Software Technology},
+  volume  = {151},
+  pages   = {107027},
+  year    = {2022},
+  doi     = {10.1016/j.infsof.2022.107027}
+}
+
+@inproceedings{tensorflow,
+  author    = {Martin Abadi and Paul Barham and Jianmin Chen and Zhifeng Chen and Andy Davis and Jeffrey Dean and Matthieu Devin and Sanjay Ghemawat and Geoffrey Irving and Michael Isard and others},
+  title     = {{TensorFlow}: A System for Large-Scale Machine Learning},
+  booktitle = {12th USENIX Symposium on Operating Systems Design and Implementation},
+  year      = {2016},
+  pages     = {265--283},
+  url       = {https://www.usenix.org/conference/osdi16/technical-sessions/presentation/abadi}
+}
+
+@inproceedings{pytorch,
+  author    = {Adam Paszke and Sam Gross and Francisco Massa and Adam Lerer and James Bradbury and Gregory Chanan and Trevor Killeen and Zeming Lin and Natalia Gimelshein and Luca Antiga and others},
+  title     = {{PyTorch}: An Imperative Style, High-Performance Deep Learning Library},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2019},
+  url       = {https://arxiv.org/abs/1912.01703}
 }

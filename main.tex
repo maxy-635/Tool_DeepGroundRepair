@@ -9,7 +9,7 @@
 
 \begin{document}
 
-\title{\textsc{DeepGroundRepair}: A Tool for API-Grounded Generation and Shape-Aware Repair of Deep Learning Programs}
+\title{\textsc{DeepGroundRepair}: A Tool for API-Grounded Generation and Shape-Aware Debugging of Deep Learning Programs}
 
 \author{
 \IEEEauthorblockN{Xiangyue Ma, Zhen Wang, Jun Li, Haotian Li, and Zheng Zheng}
@@ -19,36 +19,43 @@
 \maketitle
 
 \begin{abstract}
-Large language models (LLMs) can generate deep learning (DL) programs from natural-language requirements, but the generated programs may contain API-level syntactic issues or fail at runtime because of tensor-shape mismatches. We present the tool realization of \textsc{DeepGroundRepair}, which integrates API-grounded generation, failure localization, and shape-aware repair into an executable workflow. It grounds draft generation in task-relevant API knowledge, localizes upstream API configurations behind tensor-shape failures, and uses runtime tensor shapes to guide parameter repair. Re-execution validates the resulting program. \textsc{DeepGroundRepair} supports TensorFlow, PyTorch, and PaddlePaddle and is intended for DL developers and software engineering researchers working with LLM-generated DL code. The artifact is available at \url{https://github.com/maxy-635/DeepGroundRepair}; the demonstration video link will be added in the camera-ready version.
+Large language models (LLMs) can generate deep learning (DL) programs from natural-language requirements, but the generated programs may contain API-level syntactic issues or fail at runtime because of tensor-shape mismatches. We present \textsc{DeepGroundRepair}, an executable tool that integrates API-grounded generation, root-cause localization, and shape-aware repair into a unified workflow. It grounds draft code generation in task-relevant API knowledge, localizes upstream API configurations behind tensor-shape failures, and uses runtime tensor shapes to guide parameter repair. Experimental results on 100 model-level DL programming tasks show that the tool improves code executability and reduces API-level syntactic issues compared with four baselines. \textsc{DeepGroundRepair} supports TensorFlow, PyTorch, and PaddlePaddle and is intended for DL developers and software engineering researchers working with LLM-generated DL code. The artifact and demonstration video are publicly available at \url{https://github.com/maxy-635/DeepGroundRepair} and \url{VIDEO_URL}, respectively.
+
 \end{abstract}
 
 \begin{IEEEkeywords}
-deep learning programs, large language models, code generation, failure localization, program repair
+deep learning programs, large language models, code generation, root-cause localization, program repair
 \end{IEEEkeywords}
 
 \section{Introduction}
-Deep learning (DL) programs must satisfy library-specific API usage constraints and tensor-shape dependencies. LLM-generated DL programs may therefore contain nonexistent or misused APIs and may also fail at runtime because of tensor-shape mismatches. Such failures are difficult to diagnose because the operation reporting a mismatch can be downstream from the API configuration that introduced the incompatible shape.
+Large language models (LLMs) offer a promising way to generate deep learning (DL) programs from natural-language requirements. However, generating executable DL code remains challenging due to library-specific API constraints and complex tensor-shape dependencies. LLM-generated programs may invoke nonexistent or misused APIs, or fail at runtime due to incompatible tensor shapes. Such failures are particularly difficult to resolve because the operation reporting a mismatch may be far downstream from the API configuration responsible for it. Correcting the reported operation alone may therefore leave the underlying problem unresolved.
 
-Existing retrieval-augmented generation (RAG) and execution-feedback-guided repair methods face DL-specific challenges. RAG methods struggle to retrieve relevant APIs due to the gap between high-level task requirements and fine-grained API knowledge \cite{rag}. Meanwhile, traceback-guided repair provides insufficient guidance for resolving tensor-shape mismatches, which account for 77.34\% of runtime failures on average in our prior study \cite{DeepEval}, as their root causes often lie in upstream API configurations and involve complex tensor-shape dependencies. These limitations motivate a DL-specific tool that grounds code generation in verified API knowledge and guides repair through root-cause localization and explicit tensor-shape constraints.
+Existing retrieval-augmented generation (RAG) and execution-feedback-guided repair methods only partially address these challenges. RAG methods struggle to retrieve relevant APIs due to the gap between high-level task requirements and fine-grained API knowledge \cite{rag}. Meanwhile, traceback-guided repair identifies where execution fails but provides limited guidance for tracing tensor-shape mismatches to upstream configurations. This limitation is particularly significant because tensor-shape mismatches account for 77.34\% of runtime failures on average in our prior study \cite{DeepEval}. These challenges highlight the need for a DL-specific solution that connects verified API knowledge with root-cause localization and explicit tensor-shape constraints.
 
-To address these challenges, we present \textsc{DeepGroundRepair}, a tool that integrates API-grounded generation, root-cause localization, and shape-aware repair into a unified \textit{Generate} → \textit{Localize} → \textit{Repair} workflow. Given a natural-language requirement, a target DL library, and an LLM configuration, the tool generates a draft program grounded in retrieved API knowledge. If execution fails, it localizes the root cause using runtime tensor-shape information and performs targeted repair followed by execution validation. The tool also exposes intermediate diagnostic and repair artifacts, allowing users to inspect the generation and repair process.
+% We have addressed these challenges by proposing \textsc{DeepGroundRepair}, a DL-specific framework for API-grounded code generation and shape-aware repair, in an associated research study currently under review at ACM Transactions on Software Engineering and Methodology (TOSEM) \cite{deepgroundrepair}. Building on this framework, we develop an executable tool that integrates API-grounded generation, root-cause localization, and shape-aware repair into a unified \textit{Generate} $\rightarrow$ \textit{Localize} $\rightarrow$ \textit{Repair} workflow. The tool generates draft code using retrieved and verified API knowledge, traces runtime tensor-shape mismatches to upstream API configurations, and performs targeted repair followed by execution validation.
 
-This paper presents the tool realization of the previously proposed \textsc{DeepGroundRepair} approach. Rather than restating the underlying algorithms, we focus on how its generation--localization--repair backend is used in practice, demonstrated on a representative tensor-shape failure.
+% This paper focuses on the tool-level implementation and practical usage of \textsc{DeepGroundRepair}. We describe its stage-wise execution and configurable supporting resources, including locally deployed LLMs and library-specific API knowledge bases. The tool also exposes intermediate artifacts, such as generated drafts, parameter-masked code, tensor-shape annotations, and repaired programs, making the workflow inspectable and reproducible. A representative demonstration illustrates these artifacts and shows how they support the localization and repair of a tensor-shape mismatch.
 
 
+These challenges motivate \textsc{DeepGroundRepair}, whose retrieval, localization, and repair algorithms are detailed
+in an associated research study currently under review at ACM Transactions on Software Engineering and Methodology
+(TOSEM) \cite{deepgroundrepair}. Building on this study, we develop an executable tool that implements these
+algorithms as a unified \textit{Generate} $\rightarrow$ \textit{Localize} $\rightarrow$ \textit{Repair} workflow.
+
+This paper focuses on the tool-level implementation and practical usage of \textsc{DeepGroundRepair}. The tool
+provides stage-specific execution scripts, configurable LLMs, and library-specific API knowledge bases. It exposes intermediate artifacts, including retrieved API knowledge, generated code, localized root causes, tensor-shape annotations, and repaired programs. These artifacts allow users to inspect the localization and repair process and validate the repaired programs through execution. A representative demonstration illustrates these capabilities using a tensor-shape mismatch.
 
 \section{\textsc{DeepGroundRepair} Tool Design}
-
-\textsc{DeepGroundRepair} integrates API-grounded generation, failure diagnosis, and shape-aware repair into a unified workflow. As shown in Figure~\ref{fig:workflow}, the tool organizes these stages into an executable pipeline, where generated code and diagnostic information are passed between stages to guide subsequent processing. The workflow is supported by locally deployed LLMs and a library-specific API knowledge base covering TensorFlow, PyTorch, and PaddlePaddle.
+Figure~\ref{fig:workflow} presents the architecture of \textsc{DeepGroundRepair}. Its three stages form an executable pipeline supported by locally deployed LLMs and library-specific API knowledge bases.
 
 \noindent\textbf{API-Grounded Generation.}
-Given a natural-language task requirement and a target DL library, \textsc{DeepGroundRepair} recommends task-relevant APIs, verifies their existence, and retrieves corresponding API documentation from the knowledge base. The retrieved knowledge is then provided to the LLM to generate a draft DL program. This stage produces the initial code for subsequent execution and diagnosis.
-
-\noindent\textbf{Failure Diagnosis.}
-The tool executes the generated program and captures runtime failures. For tensor-shape mismatches, it combines traceback information with static and dynamic analysis to trace the failure to its upstream API configuration. The diagnosis identifies the root-cause API, suspicious parameters, and relevant tensor shapes. It then masks the suspicious parameters in the generated code, producing parameter-masked code for subsequent repair.
+Given a natural-language task requirement and a target DL library, \textsc{DeepGroundRepair} recommends task-relevant APIs, verifies their existence, and retrieves corresponding API documentation from the knowledge base. The retrieved knowledge is then provided to the LLM to generate a draft DL program. This stage produces the initial code for subsequent execution and localization.
+ 
+\noindent\textbf{Root-Cause Localization.}
+The tool executes the generated program and captures runtime failures. For tensor-shape mismatches, it combines traceback information with static and dynamic analysis to trace the failure to its upstream API configuration. The localization identifies the root-cause API, suspicious parameters, and relevant tensor shapes. It then masks the suspicious parameters in the generated code, producing parameter-masked code for subsequent repair.
 
 \noindent\textbf{Shape-Aware Repair.}
-The tool annotates the parameter-masked code with traced tensor shapes and retrieves relevant shape-related API knowledge. The annotated code and retrieved knowledge are provided to the LLM to guide targeted repair of the identified parameters. The resulting program is re-executed to validate whether the runtime failure has been resolved.
+The tool annotates the parameter-masked code with traced tensor shapes and retrieves relevant shape-related API knowledge. The annotated code and retrieved knowledge are provided to the LLM to guide targeted repair of the identified parameters. The resulting program is re-executed to validate whether the runtime failure has been resolved. For non-shape-related runtime failures, the tool applies a single-round traceback-guided repair strategy.
 
 \input{overview.tex}
 
@@ -62,7 +69,7 @@ The tool annotates the parameter-masked code with traced tensor shapes and retri
 \textsc{DeepGroundRepair} supports locally deployed open-weight LLMs through Hugging Face Transformers. The current implementation uses models from the Gemma-3 and Mistral families, covering parameter sizes from 3B to 27B. Users can configure the local model checkpoints in the provided execution scripts to perform API recommendation, code generation, and shape-aware repair.
 
 \noindent\textbf{DL API Knowledge Base.}
-\textsc{DeepGroundRepair} incorporates library-specific API knowledge bases constructed from the official documentation of TensorFlow, PyTorch, and PaddlePaddle, containing 3,686, 4,137, and 1,531 API entries, respectively. Each knowledge base provides sparse and dense retrieval indexes to support Stages 1 and 3. Specifically, Stage 1 retrieves API names, signatures, and descriptions for draft code generation, while Stage 3 additionally retrieves parameter descriptions and available tensor-shape transformation formulas to guide inter-path mismatch repair.
+\textsc{DeepGroundRepair} incorporates library-specific API knowledge bases constructed from the official documentation of TensorFlow, PyTorch, and PaddlePaddle, containing 3,686, 4,137, and 1,531 API entries, respectively. Each knowledge base provides sparse and dense retrieval indexes to support Stages 1 and 3. Specifically, Stage 1 retrieves API names, signatures, and descriptions for draft code generation. Stage 3 additionally retrieves parameter descriptions and available tensor-shape transformation formulas to guide shape-aware repair.
 
 
 \subsection{Tool Configuration and Execution}
@@ -71,92 +78,57 @@ The tool annotates the parameter-masked code with traced tensor shapes and retri
 The current prototype uses natural-language task requirements from the DeepEval benchmark \cite{DeepEval}, stored as YAML files under \path{benchmark/DeepEval/}, each containing a \texttt{Requirement} field. Before execution, users configure the target DL library (\texttt{--dlls}), benchmark (\texttt{--benchmark}), LLM checkpoint, experiment ID, and number of generation repeats (\texttt{--repeats}) in the provided scripts. Consistent model and experiment IDs are maintained across the three stages to ensure correct access to intermediate results. The repository also provides preconstructed API knowledge bases under \path{database/}.
 
 \noindent\textbf{Tool Execution.}
-The three stages are invoked sequentially through their respective \texttt{run\_main.sh} scripts under \path{run_bashes/step_one/}, \path{run_bashes/step_two/}, and \path{run_bashes/step_three/}. Stage 1 generates draft DL programs and saves them as \texttt{generated\_code.py}, together with API retrieval records. Stage 2 processes the generated programs to diagnose execution failures, producing \texttt{annotated\_code.py} and \texttt{annotated\_code.json}, which contain code and structured diagnostic information for downstream repair. Stage 3 consumes these two artifacts to generate \texttt{repaired\_code.py} and re-executes the repaired program for validation. The stage-specific code artifacts are organized under \path{response/}, with execution logs stored under \path{logs/}. The repository also provides separate evaluation scripts for checking code executability, API-level syntactic issues, and semantic consistency.
+After configuration, users invoke the three stages sequentially through their respective \texttt{run\_main.sh} scripts under \path{run_bashes/step_one/}, \path{run_bashes/step_two/}, and \path{run_bashes/step_three/}. Stage 1 generates draft programs (\texttt{generated\_code.py}) and API retrieval records. Stage 2 diagnoses execution failures and produces
+\texttt{annotated\_code.py} and \texttt{annotated\_code.json}, containing parameter-masked code and structured diagnostic information. Stage 3 uses these artifacts to generate \texttt{repaired\_code.py} and validates the repair through re-execution.
 
+The generated artifacts are stored under \path{response/}, with execution logs under \path{logs/}. Users can inspect the masked parameters and localization results, examine the associated tensor-shape evidence, and compare the draft and repaired programs. Execution logs indicate whether the repaired program passes validation. The repository also provides
+evaluation scripts for code executability, API-level syntactic issues, and semantic consistency.
 
 \section{Evaluation and Representative Demonstration}
 \subsection{Evaluation}
-The associated research study evaluates \textsc{DeepGroundRepair} on 100 model-level DL programming tasks using six open-weight LLMs across TensorFlow, PyTorch, and PaddlePaddle\cite{deepgroundrepair}. We compare it with four baselines: Vanilla LLM (B1), Hybrid-RAG (B2), and their traceback-guided self-debugging counterparts (B3 and B4).
+The associated research study evaluates \textsc{DeepGroundRepair} on 100 model-level DL programming tasks using six open-weight LLMs across TensorFlow, PyTorch, and PaddlePaddle \cite{deepgroundrepair}. Four baselines are considered. \textit{Vanilla LLM} (B1) generates code directly from the task requirement; \textit{Hybrid-RAG} (B2) augments generation with API knowledge retrieved using sparse and dense methods. B3 and B4 extend B1 and B2, respectively, with traceback-guided self-debugging, in which the LLM revises a failed program using execution error feedback \cite{selfrepair}.
 
-\begin{table}[t]
-\caption{API-level syntactic issues per 10 programs,
-averaged across six LLMs (lower is better).}
-\label{tab:api_issues}
-\centering
-\small
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lccc}
-\toprule
-Method & TensorFlow & PyTorch & PaddlePaddle \\
-\midrule
-B1 & 5.82 & 3.14 & 27.35 \\
-B2 & 4.44 & 1.36 & 11.09 \\
-B3 & 5.38 & 1.86 & 22.42 \\
-B4 & 4.28 & \textbf{1.08} & 9.88 \\
-\textbf{DeepGR}
-& \textbf{0.94} & 1.30 & \textbf{6.08} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}[t]
-\caption{Code Executability Rate (CER, \%) averaged
-across six LLMs (higher is better).}
-\label{tab:cer}
-\centering
-\small
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lccc}
-\toprule
-Method & TensorFlow & PyTorch & PaddlePaddle \\
-\midrule
-B1 & 37.8 & 17.0 & 12.2 \\
-B2 & 36.7 & 22.7 & 8.3 \\
-B3 & 51.2 & 26.5 & 19.5 \\
-B4 & 49.0 & 31.3 & 17.8 \\
-\textbf{DeepGR}
-& \textbf{58.2} & \textbf{41.2} & \textbf{31.5} \\
-\bottomrule
-\end{tabular}
-\end{table}
+\input{syntax.tex}
+\input{executability.tex}
 
 \noindent\textbf{End-to-End Effectiveness.}
-We use code executability, measured by Code Executability Rate (CER), as the primary effectiveness criterion because successful execution is a fundamental requirement for generated DL programs. As shown in Table~\ref{tab:api_issues}, \textsc{DeepGroundRepair} reduces API-level syntactic issues, including API hallucinations and parameter misuses, by an average of 5.4 issues per 10 programs compared with the four baselines. As shown in Table~\ref{tab:cer}, it achieves the highest average CER across all three DL libraries, with an average relative improvement of 86.0\% over the baselines. Compared with the two self-debugging baselines, it further improves Semantic Consistency Rate (SCR) by an average of 16.7\%, indicating better
-preservation of program structure during repair.
+We use code executability, measured by Code Executability Rate (CER), as the primary effectiveness criterion because successful execution is a fundamental requirement for generated DL programs. As shown in Table~\ref{tab:api_issues}, \textsc{DeepGroundRepair} reduces API-level syntactic issues, including API hallucinations and parameter misuses, by an average of 5.4 issues per 10 programs compared with the four baselines. As shown in Table~\ref{tab:cer}, it achieves the highest average CER across all three DL libraries, with an average relative improvement of 86.0\% over the baselines. Compared with the two self-debugging baselines, it further
+improves Semantic Consistency Rate (SCR) by an average of 18.1\%. SCR uses effective-line-count preservation as a proxy for semantic consistency, rather than directly establishing semantic equivalence.
 
 \noindent\textbf{Token Efficiency.}
 Compared with the generation-only baselines (B1--B2), \textsc{DeepGroundRepair} incurs 25.0\%--63.0\% higher token cost while improving CER by 54.0\%--279.5\%. More notably, compared with the self-debugging baselines (B3--B4), it reduces token cost by 18.5\%--33.9\% while improving CER by 13.7\%--77.0\%. These results demonstrate that \textsc{DeepGroundRepair} achieves higher executability with lower token cost than traceback-guided self-debugging approaches. Further experimental results and detailed analyses are presented in the associated research study\cite{deepgroundrepair}.
 
-
-\subsection{Representative Demonstration}
 \input{example.tex}
+\subsection{Representative Demonstration}
 
 Figure~\ref{fig:example} illustrates the generation--localization--repair workflow using a representative PyTorch tensor-shape mismatch from the associated study \cite{deepgroundrepair}.
 
-(a) Draft Code with Bug. As shown in Figure~\ref{fig:example}(a), the draft program defines a fully connected layer using \texttt{nn.Linear} with \texttt{in\_features=512*7*7} and \texttt{out\_features=1024}. However, the actual input tensor to this layer contains 401,408 features, rather than the configured 25,088. Consequently, execution fails at \texttt{self.fc1(x)} with a matrix-shape mismatch.
+\noindent\textbf{(a) Draft Code with Bug.} As shown in Figure~\ref{fig:example}(a), the draft program defines a fully connected layer using \texttt{nn.Linear} with \texttt{in\_features=512*7*7} and \texttt{out\_features=1024}. However, the actual input tensor to this layer contains 401,408 features, rather than the configured 25,088. Consequently, execution fails at \texttt{self.fc1(x)} with a matrix-shape mismatch.
 
-(b) Parameter-Masked Code. As shown in Figure~\ref{fig:example}(b), \textsc{DeepGroundRepair} combines the traceback with static and dynamic analysis to trace the failure from \texttt{self.fc1(x)} back to the upstream \texttt{nn.Linear} constructor. It identifies \texttt{in\_features} as the suspicious parameter and replaces its value with \texttt{<mask>}, producing parameter-masked code for subsequent repair.
+\noindent\textbf{(b) Parameter-Masked Code.} As shown in Figure~\ref{fig:example}(b), the traceback reports the failure at \texttt{self.fc1(x)}, whereas the root cause lies in the upstream \texttt{nn.Linear} constructor. Rather than modifying the failing operation directly, \textsc{DeepGroundRepair} combines traceback information with static and dynamic analysis to identify\texttt{in\_features} as the root-cause parameter. It then replaces its value with \texttt{<mask>}, producing parameter-masked code for subsequent repair.
 
-(c) Shape-Annotated Code. As shown in Figure~\ref{fig:example}(c), the tool annotates the parameter-masked code with runtime tensor shapes. Specifically, the tensor shape changes from \texttt{(1,512,28,28)} to \texttt{(1,401408)} after the flattening operation. These annotations provide explicit shape evidence for inferring the correct input dimension of the fully connected layer.
+\noindent\textbf{(c) Shape-Annotated Code.} As shown in Figure~\ref{fig:example}(c), the tool annotates the parameter-masked code with runtime tensor shapes. Specifically, the tensor shape changes from \texttt{(1,512,28,28)} to \texttt{(1,401408)} after the flattening operation. These annotations provide explicit shape evidence for inferring the correct input dimension of the fully connected layer.
 
-(d) Repaired Code. As shown in Figure~\ref{fig:example}(d), \textsc{DeepGroundRepair} uses the annotated tensor shapes to infer the correct \texttt{in\_features} value and replaces the masked parameter with \texttt{401408}. The repaired program is then re-executed to validate whether the tensor-shape mismatch has been resolved.
+\noindent\textbf{(d) Repaired Code.} As shown in Figure~\ref{fig:example}(d), \textsc{DeepGroundRepair} uses the annotated tensor shapes to infer the correct \texttt{in\_features} value and replaces the masked parameter with \texttt{401408}. The repaired program is re-executed and successfully passes the execution check, confirming that the reported
+tensor-shape mismatch has been resolved.
 
 
 \section{Related Work}
-\textbf{Bugs and Constraints in Deep Learning Programs.}
-Deep learning programs compose library-specific APIs into computation graphs, so correctness depends on both valid API usage and compatible tensor transformations. Empirical evidence on LLM-generated DL programs reports frequent API hallucinations, parameter misuses, and runtime tensor-shape mismatches; the latter constitute the predominant class of execution failures in the studied settings \cite{DeepEval}. These observations motivate tools that expose DL-specific API and shape constraints during both generation and repair.
+\noindent\textbf{DL Program Bugs and Shape Repair.}
+Prior studies have identified API misuse and tensor-shape mismatches as prevalent defects in DL programs, including LLM-generated code \cite{islambugs,DeepEval}. Addressing these challenges requires not only correct API usage but also effective localization and repair of shape-related failures. \textsc{DeepGroundRepair} integrates API-grounded generation, root-cause localization, and shape-aware repair to address these issues in a unified workflow.
 
-\textbf{Retrieval-Augmented Code Generation.}
-Retrieval-augmented generation (RAG) grounds an LLM's output in external knowledge \cite{rag}. API documentation can provide signatures, parameter descriptions, and usage constraints, while relevant code retrieval can provide reusable implementation context. However, a natural-language DL requirement describes modeling intent at a higher level than an individual API, so a direct retrieval query may return irrelevant documentation. \textsc{DeepGroundRepair} addresses this gap by recommending and verifying task-relevant APIs before retrieving library-specific knowledge for generation and repair.
+\noindent\textbf{Retrieval-Augmented Code Generation.}
+Retrieval-augmented approaches improve code generation by incorporating external knowledge, particularly API documentation and search results \cite{rag,docprompting,toolcoder}. However, retrieved knowledge alone may not ensure valid API usage or resolve runtime failures caused by tensor-shape dependencies. \textsc{DeepGroundRepair} addresses these limitations by verifying task-relevant APIs before generation and incorporating library-specific knowledge into subsequent repair.
 
-\textbf{Repair of LLM-Generated Code.}
-Feedback-guided methods use execution results or self-generated explanations to iteratively revise generated programs; self-debugging is a representative example \cite{selfrepair}. Such feedback is useful for general code repair, but a raw traceback often identifies only the downstream operation where a DL shape mismatch becomes visible. \textsc{DeepGroundRepair} complements feedback-guided repair with root-cause localization and explicit runtime tensor-shape guidance, thereby targeting the upstream API configuration and parameter values that need to be changed. The present paper focuses on the executable realization and usage of this generation--localization--repair workflow, while the underlying framework is described in the associated research study \cite{deepgroundrepair}.
+\noindent\textbf{Execution-Feedback-Guided Code Repair.}
+Existing approaches leverage execution feedback to iteratively improve generated programs \cite{coderl,selfrepair}. However, traceback feedback may identify where a tensor-shape mismatch occurs without revealing the upstream API configuration responsible for it. \textsc{DeepGroundRepair} addresses this gap through root-cause localization and explicit tensor-shape evidence to guide targeted repair. The underlying algorithms are detailed in the associated research study \cite{deepgroundrepair}.
 
 
 \section{Conclusion}
-This tool paper presents the executable realization of \textsc{DeepGroundRepair} for LLM-generated deep learning programs. Starting from a natural-language requirement, the tool grounds draft generation in library-specific API knowledge, diagnoses the upstream causes of tensor-shape failures, produces a shape-aware repair, and validates the repaired program through re-execution. The current implementation supports TensorFlow, PyTorch, and PaddlePaddle, and exposes intermediate artifacts such as retrieved APIs, failure traces, localized parameters, runtime shapes, and repaired code so that users can inspect and reproduce the workflow.
+% This tool paper presents the executable realization of \textsc{DeepGroundRepair} for LLM-generated deep learning programs. Starting from a natural-language requirement, the tool grounds draft generation in library-specific API knowledge, diagnoses the upstream causes of tensor-shape failures, produces a shape-aware repair, and validates the repaired program through re-execution. The current implementation supports TensorFlow, PyTorch, and PaddlePaddle, and exposes intermediate artifacts such as retrieved APIs, failure traces, localized parameters, runtime shapes, and repaired code so that users can inspect and reproduce the workflow.
 
-Across the evaluated model-level tasks, the associated study reports fewer API hallucinations and parameter misuses, an average relative improvement of 86.0\% in code executability, and a 16.7\% average improvement in semantic consistency over traceback-guided self-debugging baselines \cite{deepgroundrepair}. These results support the practical value of combining API grounding, root-cause localization, and shape-aware repair in one tool workflow. Future work will extend the tool with lightweight constraint checking during generation, stronger analysis for complex tensor flows, adaptive multi-step repair for interacting faults, and diagnosis of additional failure types such as dtype or device incompatibilities, numerical instability, and training-time failures.
+% Across the evaluated model-level tasks, the associated study reports fewer API hallucinations and parameter misuses, an average relative improvement of 86.0\% in code executability, and a 16.7\% average improvement in semantic consistency over traceback-guided self-debugging baselines \cite{deepgroundrepair}. These results support the practical value of combining API grounding, root-cause localization, and shape-aware repair in one tool workflow. Future work will extend the tool with lightweight constraint checking during generation, stronger analysis for complex tensor flows, adaptive multi-step repair for interacting faults, and diagnosis of additional failure types such as dtype or device incompatibilities, numerical instability, and training-time failures.
+We present the executable \textsc{DeepGroundRepair} tool, which integrates API-grounded generation, root-cause localization, and shape-aware repair for LLM-generated DL programs. It supports TensorFlow, PyTorch, and PaddlePaddle and exposes intermediate artifacts for inspection and reproducibility. Evaluation results from the associated study show improved code executability and fewer API-level issues compared with generation and traceback-guided self-debugging baselines \cite{deepgroundrepair}. The demonstration illustrates how upstream shape evidence can guide a targeted, validated repair.
 
 \bibliographystyle{IEEEtran}
 \bibliography{reference}
