@@ -55,7 +55,7 @@ Given a natural-language task requirement and a target DL library, \textsc{DeepG
 The tool executes the generated program and captures runtime failures. For tensor-shape mismatches, it combines traceback information with static and dynamic analysis to trace the failure to its upstream API configuration. The localization identifies the root-cause API, suspicious parameters, and relevant tensor shapes. It then masks the suspicious parameters in the generated code, producing parameter-masked code for subsequent repair.
 
 \noindent\textbf{Shape-Aware Repair.}
-The tool annotates the parameter-masked code with traced tensor shapes and retrieves relevant shape-related API knowledge. The annotated code and retrieved knowledge are provided to the LLM to guide targeted repair of the identified parameters. The resulting program is re-executed to validate whether the runtime failure has been resolved. For non-shape-related runtime failures, the tool applies a single-round traceback-guided repair strategy \cite{deng2024constraints}.
+The tool annotates the parameter-masked code with traced tensor shapes and retrieves relevant shape-related API knowledge. The annotated code and retrieved knowledge are provided to the LLM to guide targeted repair of the identified parameters. The resulting program is re-executed to validate whether the runtime failure has been resolved. For non-shape-related runtime failures, the tool applies a single-round traceback-guided repair strategy.
 
 \input{overview.tex}
 
