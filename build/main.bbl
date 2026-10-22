@@ -7,8 +7,7 @@
 \providecommand{\BIBentrySTDinterwordspacing}{\spaceskip=0pt\relax}
 \providecommand{\BIBentryALTinterwordstretchfactor}{4}
 \providecommand{\BIBentryALTinterwordspacing}{\spaceskip=\fontdimen2\font plus
-\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
-  \fontdimen4\font\relax}
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus \fontdimen4\font\relax}
 \providecommand{\BIBforeignlanguage}[2]{{%
 \expandafter\ifx\csname l@#1\endcsname\relax
 \typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
@@ -22,115 +21,75 @@
 \BIBdecl
 
 \bibitem{humbatova2020}
-N.~Humbatova, G.~Jahangirova, G.~Bavota, V.~Riccio, A.~Stocco, and P.~Tonella,
-  ``Taxonomy of real faults in deep learning systems,'' in \emph{Proceedings of
-  the 42nd International Conference on Software Engineering}, 2020, pp.
-  1110--1121.
+N.~Humbatova, G.~Jahangirova, G.~Bavota, V.~Riccio, A.~Stocco, and P.~Tonella, ``Taxonomy of real faults in deep learning systems,'' in \emph{Proceedings of the 42nd International Conference on Software Engineering}, 2020, pp. 1110--1121.
 
 \bibitem{wei2022dlapi}
-M.~Wei, N.~S. Harzevili, Y.~Huang, Y.~Jinqiu, J.~Wang, and S.~Wang,
-  ``Demystifying and detecting misuses of deep learning apis,'' in
-  \emph{Proceedings of the 44th International Conference on Software
-  Engineering}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2022.
+M.~Wei, N.~S. Harzevili, Y.~Huang, Y.~Jinqiu, J.~Wang, and S.~Wang, ``Demystifying and detecting misuses of deep learning apis,'' in \emph{Proceedings of the 44th International Conference on Software Engineering}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2022.
 
 \bibitem{rag}
 \BIBentryALTinterwordspacing
-P.~Lewis, E.~Perez, A.~Piktus, F.~Petroni, V.~Karpukhin, N.~Goyal, H.~Kuttler,
-  M.~Lewis, W.~tau Yih, T.~Rocktaschel, S.~Riedel, and D.~Kiela,
-  ``Retrieval-augmented generation for knowledge-intensive {NLP} tasks,'' in
-  \emph{Advances in Neural Information Processing Systems}, 2020. [Online].
-  Available: \url{https://arxiv.org/abs/2005.11401}
+P.~Lewis, E.~Perez, A.~Piktus, F.~Petroni, V.~Karpukhin, N.~Goyal, H.~Kuttler, M.~Lewis, W.~tau Yih, T.~Rocktaschel, S.~Riedel, and D.~Kiela, ``Retrieval-augmented generation for knowledge-intensive {NLP} tasks,'' in \emph{Advances in Neural Information Processing Systems}, 2020. [Online]. Available: \url{https://arxiv.org/abs/2005.11401}
 \BIBentrySTDinterwordspacing
 
 \bibitem{chen2025apidoc}
 \BIBentryALTinterwordspacing
-J.~Chen, S.~Chen, J.~Cao, J.~Shen, and S.-C. Cheung, ``When {LLM}s meet {API}
-  documentation: Can retrieval augmentation aid code generation just as it
-  helps developers?'' 2025. [Online]. Available:
-  \url{https://arxiv.org/abs/2503.15231}
+J.~Chen, S.~Chen, J.~Cao, J.~Shen, and S.-C. Cheung, ``When {LLM}s meet {API} documentation: Can retrieval augmentation aid code generation just as it helps developers?'' 2025. [Online]. Available: \url{https://arxiv.org/abs/2503.15231}
 \BIBentrySTDinterwordspacing
 
 \bibitem{jain2025apidoc}
-N.~Jain, R.~Kwiatkowski, B.~Ray, M.~K. Ramanathan, and V.~Kumar, ``On
-  mitigating code {LLM} hallucinations with {API} documentation,'' in
-  \emph{2025 IEEE/ACM 47th International Conference on Software Engineering:
-  Software Engineering in Practice (ICSE-SEIP)}, 2025, pp. 237--248.
+N.~Jain, R.~Kwiatkowski, B.~Ray, M.~K. Ramanathan, and V.~Kumar, ``On mitigating code {LLM} hallucinations with {API} documentation,'' in \emph{2025 IEEE/ACM 47th International Conference on Software Engineering: Software Engineering in Practice (ICSE-SEIP)}, 2025, pp. 237--248.
+
+\bibitem{Whatretrieveeffectiveretrieval}
+W.~Gu, J.~Chen, Y.~Wang, T.~Jiang, X.~Li, M.~Liu, X.~Liu, Y.~Ma, and Z.~Zheng, ``What to retrieve for effective retrieval-augmented code generation? {{An}} empirical study and beyond,'' Mar. 2025.
 
 \bibitem{DeepEval}
 \BIBentryALTinterwordspacing
-X.~Ma, X.~Du, C.~Li, J.~Meng, X.~Fang, W.~Ding, and Z.~Zheng, ``How do large
-  language models perform in deep learning code generation? an empirical
-  study,'' \emph{ACM Transactions on Software Engineering and Methodology},
-  2026. [Online]. Available: \url{https://doi.org/10.1145/3816024}
+X.~Ma, X.~Du, C.~Li, J.~Meng, X.~Fang, W.~Ding, and Z.~Zheng, ``How do large language models perform in deep learning code generation? an empirical study,'' \emph{ACM Transactions on Software Engineering and Methodology}, 2026. [Online]. Available: \url{https://doi.org/10.1145/3816024}
 \BIBentrySTDinterwordspacing
 
 \bibitem{deng2024constraints}
-Y.~Deng, C.~S. Xia, Z.~Cao, M.~Li, and L.~Zhang, ``Can {LLM}s implicitly learn
-  numeric parameter constraints in data science apis?'' in \emph{Advances in
-  Neural Information Processing Systems}, vol.~37, 2024.
+Y.~Deng, C.~S. Xia, Z.~Cao, M.~Li, and L.~Zhang, ``Can {LLM}s implicitly learn numeric parameter constraints in data science apis?'' in \emph{Advances in Neural Information Processing Systems}, vol.~37, 2024.
 
 \bibitem{deepgroundrepair}
 \BIBentryALTinterwordspacing
-X.~Ma, Z.~Wang, X.~Lu, X.~Du, C.~Li, J.~Li, H.~Li, and Z.~Zheng,
-  ``{DeepGroundRepair}: From api-grounded generation to shape-aware repair for
-  deep learning programs,'' 2026, preprint; manuscript under review at ACM
-  Transactions on Software Engineering and Methodology. [Online]. Available:
-  \url{https://arxiv.org/abs/2610.16897}
+X.~Ma, Z.~Wang, X.~Lu, X.~Du, C.~Li, J.~Li, H.~Li, and Z.~Zheng, ``{DeepGroundRepair}: From api-grounded generation to shape-aware repair for deep learning programs,'' 2026. [Online]. Available: \url{https://arxiv.org/abs/2610.16897}
 \BIBentrySTDinterwordspacing
 
 \bibitem{luan2021retrieval}
-Y.~Luan, J.~Eisenstein, K.~Toutanova, and M.~Collins, ``Sparse, dense, and
-  attentional representations for text retrieval,'' \emph{Transactions of the
-  Association for Computational Linguistics}, vol.~9, pp. 329--345, 2021.
+Y.~Luan, J.~Eisenstein, K.~Toutanova, and M.~Collins, ``Sparse, dense, and attentional representations for text retrieval,'' \emph{Transactions of the Association for Computational Linguistics}, vol.~9, pp. 329--345, 2021.
 
 \bibitem{robertson2009bm25}
-S.~Robertson and H.~Zaragoza, ``The probabilistic relevance framework: {BM25}
-  and beyond,'' \emph{Foundations and Trends in Information Retrieval}, vol.~4,
-  no. 1--2, pp. 1--174, 2009.
+S.~Robertson and H.~Zaragoza, ``The probabilistic relevance framework: {BM25} and beyond,'' \emph{Foundations and Trends in Information Retrieval}, vol.~4, no. 1--2, pp. 1--174, 2009.
 
 \bibitem{selfrepair}
 \BIBentryALTinterwordspacing
-X.~Chen, M.~Lin, N.~Schaerli, and D.~Zhou, ``Teaching large language models to
-  self-debug,'' in \emph{International Conference on Learning Representations},
-  2024. [Online]. Available:
-  \url{https://proceedings.iclr.cc/paper_files/paper/2024/hash/2460396f2d0d421885997dd1612ac56b-Abstract-Conference.html}
+X.~Chen, M.~Lin, N.~Schaerli, and D.~Zhou, ``Teaching large language models to self-debug,'' in \emph{International Conference on Learning Representations}, 2024. [Online]. Available: \url{https://proceedings.iclr.cc/paper_files/paper/2024/hash/2460396f2d0d421885997dd1612ac56b-Abstract-Conference.html}
 \BIBentrySTDinterwordspacing
 
 \bibitem{islambugs}
 \BIBentryALTinterwordspacing
-M.~J. Islam, G.~Nguyen, R.~Pan, and H.~Rajan, ``A comprehensive study on deep
-  learning bug characteristics,'' in \emph{Proceedings of the 27th ACM Joint
-  European Software Engineering Conference and Symposium on the Foundations of
-  Software Engineering}, 2019. [Online]. Available:
-  \url{https://arxiv.org/abs/1906.01388}
+M.~J. Islam, G.~Nguyen, R.~Pan, and H.~Rajan, ``A comprehensive study on deep learning bug characteristics,'' in \emph{Proceedings of the 27th ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering}, 2019. [Online]. Available: \url{https://arxiv.org/abs/1906.01388}
 \BIBentrySTDinterwordspacing
 
 \bibitem{docprompting}
 \BIBentryALTinterwordspacing
-S.~Zhou, U.~Alon, F.~F. Xu, Z.~Jiang, and G.~Neubig, ``{DocPrompting}:
-  Generating code by retrieving the docs,'' in \emph{International Conference
-  on Learning Representations}, 2023. [Online]. Available:
-  \url{https://mlanthology.org/iclr/2023/zhou2023iclr-docprompting/}
+S.~Zhou, U.~Alon, F.~F. Xu, Z.~Jiang, and G.~Neubig, ``{DocPrompting}: Generating code by retrieving the docs,'' in \emph{International Conference on Learning Representations}, 2023. [Online]. Available: \url{https://mlanthology.org/iclr/2023/zhou2023iclr-docprompting/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{toolcoder}
 \BIBentryALTinterwordspacing
-K.~Zhang, H.~Zhang, G.~Li, J.~Li, Z.~Li, and Z.~Jin, ``{ToolCoder}: Teach code
-  generation models to use {API} search tools,'' 2023. [Online]. Available:
-  \url{https://arxiv.org/abs/2305.04032}
+K.~Zhang, H.~Zhang, G.~Li, J.~Li, Z.~Li, and Z.~Jin, ``{ToolCoder}: Teach code generation models to use {API} search tools,'' 2023. [Online]. Available: \url{https://arxiv.org/abs/2305.04032}
 \BIBentrySTDinterwordspacing
 
 \bibitem{coderl}
 \BIBentryALTinterwordspacing
-H.~Le, Y.~Wang, A.~D. Gotmare, S.~Savarese, and S.~C.~H. Hoi, ``{CodeRL}:
-  Mastering code generation through pretrained models and deep reinforcement
-  learning,'' in \emph{Advances in Neural Information Processing Systems},
-  2022. [Online]. Available: \url{https://arxiv.org/abs/2207.01780}
+H.~Le, Y.~Wang, A.~D. Gotmare, S.~Savarese, and S.~C.~H. Hoi, ``{CodeRL}: Mastering code generation through pretrained models and deep reinforcement learning,'' in \emph{Advances in Neural Information Processing Systems}, 2022. [Online]. Available: \url{https://arxiv.org/abs/2207.01780}
 \BIBentrySTDinterwordspacing
 
 \bibitem{olausson2024selfrepair}
-T.~X. Olausson, J.~P. Inala, C.~Wang, J.~Gao, and A.~Solar-Lezama, ``Is
-  self-repair a silver bullet for code generation?'' in \emph{International
-  Conference on Learning Representations}, 2024.
+T.~X. Olausson, J.~P. Inala, C.~Wang, J.~Gao, and A.~Solar-Lezama, ``Is self-repair a silver bullet for code generation?'' in \emph{International Conference on Learning Representations}, 2024.
+
+\bibitem{codecorrectness}
+Y.~Shi, S.~Wang, C.~Wan, M.~Wang, and X.~Gu, ``From code to correctness: Closing the last mile of code generation with hierarchical debugging,'' 2024.
 
 \end{thebibliography}
