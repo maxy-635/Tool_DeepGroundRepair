@@ -42,6 +42,8 @@ These challenges motivate \textsc{DeepGroundRepair}, whose retrieval, localizati
 This paper focuses on the tool-level implementation and practical usage of \textsc{DeepGroundRepair}. The tool
 provides stage-specific execution scripts, configurable LLMs, and library-specific API knowledge bases. It exposes intermediate artifacts, including retrieved API knowledge, generated code, localized root causes, tensor-shape annotations, and repaired programs. These artifacts allow users to inspect the localization and repair process and validate the repaired programs through execution. A representative demonstration illustrates these capabilities using a tensor-shape mismatch.
 
+\input{overview.tex}
+
 \section{\textsc{DeepGroundRepair} Tool Design}
 Figure~\ref{fig:workflow} presents the architecture of \textsc{DeepGroundRepair}. Its three stages form an executable pipeline supported by locally deployed LLMs and library-specific API knowledge bases.
 
@@ -53,8 +55,6 @@ The tool executes the generated program and captures runtime failures. For tenso
 
 \noindent\textbf{Shape-Aware Repair.}
 The tool annotates the parameter-masked code with traced tensor shapes and retrieves relevant shape-related API knowledge. The annotated code and retrieved knowledge are provided to the LLM to guide targeted repair of the identified parameters. The resulting program is re-executed to validate whether the runtime failure has been resolved. For non-shape-related runtime failures, the tool applies a single-round traceback-guided repair strategy.
-
-\input{overview.tex}
 
 
 \section{Tool Usage}
@@ -73,12 +73,15 @@ The tool annotates the parameter-masked code with traced tensor shapes and retri
 \noindent\textbf{Input and Configuration.}
 The current prototype uses natural-language task requirements from the DeepEval benchmark \cite{DeepEval}, stored as YAML files under \path{benchmark/DeepEval/}, each containing a \texttt{Requirement} field. Before execution, users configure the target DL library (\texttt{--dlls}), benchmark (\texttt{--benchmark}), LLM checkpoint, experiment ID, and number of generation repeats (\texttt{--repeats}) in the provided scripts. Consistent model and experiment IDs are maintained across the three stages to ensure correct access to intermediate results. The repository also provides preconstructed API knowledge bases under \path{database/}.
 
+\input{example.tex}
+
 \noindent\textbf{Tool Execution.}
 After configuration, users invoke the three stages sequentially through their respective \texttt{run\_main.sh} scripts under \path{run_bashes/step_one/}, \path{run_bashes/step_two/}, and \path{run_bashes/step_three/}. Stage 1 generates draft programs (\texttt{generated\_code.py}) and API retrieval records. Stage 2 diagnoses execution failures and produces
 \texttt{annotated\_code.py} and \texttt{annotated\_code.json}, containing parameter-masked code and structured diagnostic information. Stage 3 uses these artifacts to generate \texttt{repaired\_code.py} and validates the repair through re-execution.
 
 The generated artifacts are stored under \path{response/}, with execution logs under \path{logs/}. Users can inspect the masked parameters and localization results, examine the associated tensor-shape evidence, and compare the draft and repaired programs. Execution logs indicate whether the repaired program passes validation. The repository also provides
 evaluation scripts for code executability, API-level syntactic issues, and semantic consistency.
+
 
 \section{Evaluation and Representative Demonstration}
 \subsection{Evaluation}
@@ -94,7 +97,7 @@ improves Semantic Consistency Rate (SCR) by an average of 18.1\%. SCR uses effec
 \noindent\textbf{Token Efficiency.}
 Compared with the generation-only baselines (B1--B2), \textsc{DeepGroundRepair} incurs 25.0\%--63.0\% higher token cost while improving CER by 54.0\%--279.5\%. More notably, compared with the self-debugging baselines (B3--B4), it reduces token cost by 18.5\%--33.9\% while improving CER by 13.7\%--77.0\%. These results demonstrate that \textsc{DeepGroundRepair} achieves higher executability with lower token cost than traceback-guided self-debugging approaches. Further experimental results and detailed analyses are presented in the associated research study\cite{deepgroundrepair}.
 
-\input{example.tex}
+
 
 \subsection{Representative Demonstration}
 Figure~\ref{fig:example} illustrates the generation--localization--repair workflow using a representative PyTorch tensor-shape mismatch from the associated study \cite{deepgroundrepair}.
